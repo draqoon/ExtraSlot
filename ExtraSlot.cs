@@ -8,7 +8,7 @@ using Terraria.ModLoader.IO;
 using Terraria.UI;
 
 namespace ExtraSlot {
-    public class ExtraSlot : Mod {
+    public class ExtraSlot: Mod {
         public const string AllowAccessorySlots = "allowInAccessorySlots";
         public const string AllowFargoAccessorySlots = "allowFargoInAccessorySlots";
         public static readonly ModConfig Config = new ModConfig( nameof( ExtraSlot ) );
@@ -33,9 +33,8 @@ namespace ExtraSlot {
                 return;
 
             var layer = new LegacyGameInterfaceLayer( $"{nameof( ExtraSlot )}: DrawItemSlot", () => {
-                var wsp = Main.player[Main.myPlayer].GetModPlayer<ExtraSlotPlayer>( this );
-                wsp.Draw( Main.spriteBatch );
-
+                var player = Main.player[Main.myPlayer].GetModPlayer<ExtraSlotPlayer>( this );
+                player.Draw( Main.spriteBatch );
                 return true;
             }, InterfaceScaleType.UI );
 
@@ -48,7 +47,7 @@ namespace ExtraSlot {
             }
         }
 
-        public override void HandlePacket(BinaryReader reader, int whoAmI) {
+        public override void HandlePacket( BinaryReader reader, int whoAmI ) {
             var index = reader.ReadByte();
             var message = (PacketMessageType)reader.ReadByte();
             var player = reader.ReadByte();

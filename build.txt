@@ -1,0 +1,10 @@
+﻿author=draqoon
+version=0.1.0.0
+displayName=Extra Slot
+dllReferences=
+modReferences=
+noCompile=false
+homepage=
+buildIgnore = *.csproj, *.user, *\obj\*, bin\*, .vs\*, *.config, .svn\*, packages\*, *\.git*, *.md
+includePDB=true
+languageVersion = 6
